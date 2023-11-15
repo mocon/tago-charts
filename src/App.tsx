@@ -29,7 +29,7 @@ export default function App() {
 
     // Listen for realtime data
     window.TagoIO.onRealtime((data) => {
-      console.info('🏀 onRealTime data =>', JSON.stringify(data, null, 2))
+      console.info('🏀 onRealtime data =>', JSON.stringify(data, null, 2))
     })
   }, [])
 
