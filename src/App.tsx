@@ -4,7 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 // Import Tago.io custom widget script
-import './assets/custom-widget.js'
+import './assets/custom-widget.min.js'
 
 // Tell TypeScript about Tago.io global variables
 declare global {
