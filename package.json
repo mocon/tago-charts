@@ -2,7 +2,7 @@
   "name": "tago-charts",
   "homepage": "https://mocon.github.io/tago-charts/",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tago-io/sdk": "^11.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
