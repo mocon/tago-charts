@@ -1,3 +1,4 @@
+/** Information about the Tago.io widget */
 export type TagoWidget = {
   analysis_run: string | null
   dashboard: string
@@ -45,3 +46,27 @@ export type TagoWidget = {
   realtime: string
   type: string
 }
+
+/** Realtime data from Tago.io */
+export type TagoRealtimeData = {
+  data: {
+    qty: number
+    origin: string
+    variables: string[]
+    bucket: string
+  }
+  result: {
+    id: string
+    time: string
+    unit: string
+    value: number
+    variable: string
+    metadata: {
+      label: string
+    }
+    group: string
+    device: string
+    origin: string
+    serie: string
+  }[]
+}[]
