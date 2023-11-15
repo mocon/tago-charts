@@ -2,34 +2,27 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-
-// Import Tago.io custom widget script
 import './assets/custom-widget.min.js'
+import type { TagoWidget } from './types/tago'
 
 // Tell TypeScript about Tago.io global variables
 declare global {
   interface Window {
     TagoIO: {
       ready: () => void
-      onStart: (callback: (widget: unknown) => void) => void
+      onStart: (callback: (widget: TagoWidget) => void) => void
     }
-    widget: unknown
   }
 }
 
-// App
-function App() {
+export default function App() {
+  const [widget, setWidget] = useState<TagoWidget | null>(null)
   const [count, setCount] = useState(0)
 
+  // Start communication with Tago.io, get widget information
   useEffect(() => {
-    // Start communication with Tago.io
     window.TagoIO.ready()
-
-    // Get the widget information
-    window.TagoIO.onStart((widget: unknown) => {
-      console.log('🏀 widget =>', JSON.stringify(widget, null, 2))
-      window.widget = widget
-    })
+    window.TagoIO.onStart((widget) => setWidget(widget))
   }, [])
 
   return (
@@ -47,9 +40,10 @@ function App() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <pre>
+          <code>{JSON.stringify(widget, null, 2)}</code>
+        </pre>
       </div>
     </>
   )
 }
-
-export default App
