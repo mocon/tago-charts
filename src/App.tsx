@@ -3,6 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+// Import Tago.io custom widget script
+import './assets/custom-widget.js'
+
 // Tell TypeScript about Tago.io global variables
 declare global {
   interface Window {
