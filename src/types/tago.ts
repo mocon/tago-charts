@@ -4,7 +4,10 @@ export type TagoWidget = {
   display: {
     header_buttons: []
     help: string
-    parameters: []
+    parameters: {
+      key: string
+      value: string
+    }[]
     theme: {
       color: {
         background: string

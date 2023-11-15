@@ -11,6 +11,7 @@ declare global {
     TagoIO: {
       ready: () => void
       onStart: (callback: (widget: TagoWidget) => void) => void
+      onRealTime: (callback: (data: unknown) => void) => void
     }
   }
 }
@@ -23,6 +24,9 @@ export default function App() {
   useEffect(() => {
     window.TagoIO.ready()
     window.TagoIO.onStart((widget) => setWidget(widget))
+    window.TagoIO.onRealTime((data) => {
+      console.info('🏀 onRealTime data =>', JSON.stringify(data, null, 2))
+    })
   }, [])
 
   return (
