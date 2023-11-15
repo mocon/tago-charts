@@ -11,7 +11,7 @@ declare global {
     TagoIO: {
       ready: () => void
       onStart: (callback: (widget: TagoWidget) => void) => void
-      onRealTime: (callback: (data: unknown) => void) => void
+      onRealtime: (callback: (data: unknown) => void) => void
     }
   }
 }
@@ -20,11 +20,15 @@ export default function App() {
   const [widget, setWidget] = useState<TagoWidget | null>(null)
   const [count, setCount] = useState(0)
 
-  // Start communication with Tago.io, get widget information
   useEffect(() => {
+    // Start communication with Tago.io
     window.TagoIO.ready()
+
+    // Get widget information
     window.TagoIO.onStart((widget) => setWidget(widget))
-    window.TagoIO.onRealTime((data) => {
+
+    // Listen for realtime data
+    window.TagoIO.onRealtime((data) => {
       console.info('🏀 onRealTime data =>', JSON.stringify(data, null, 2))
     })
   }, [])
